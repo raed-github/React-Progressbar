@@ -4,7 +4,7 @@ import ProgressBar from './component/ProgressBar';
 function App() {
   return (
     <div className="App">
-        <ProgressBar />
+        <ProgressBar isRunning={true} background="red"/>
     </div>
   );
 }
