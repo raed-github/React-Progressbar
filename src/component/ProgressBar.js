@@ -1,25 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, } from "react";
 
-const ProgressBar = ()=>{
-	const [filled, setFilled] = useState(0);
-	const [isRunning, setIsRunning] = useState(false);
+const ProgressBar = ({isRunning,background})=>{
+	const [precentage, setPercentage] = useState(0);
+	const [running, setRunning] = useState(isRunning);
 	useEffect(() => {
-		if (filled < 100 && isRunning) {
-			setTimeout(() => setFilled(prev => prev += 2), 50)
+		if (precentage < 100 && isRunning) {
+			setTimeout(() => setPercentage(prev => prev += 2), 50)
 		}
-	},[filled, isRunning])
+	},[precentage, running])
     return (
         <div>
             <div className="progressbar">
                 <div style={{
                     height: "100%",
-                    width: `${filled}%`,
-                    backgroundColor: "#0734e974",
+                    width: `${precentage}%`,
+                    background: background?background:"linear-gradient(200deg, rgb(50, 60, 254) 0%,rgba(85, 102, 253, 0.942) 32%,rgba(63, 72, 253, 0.736) 100%)",
                     transition:"width 0.5s"
                 }}></div>
-                <span className="progressPercent">{ filled }%</span>
+                <span className="progressPercent">{ precentage }%</span>
             </div>
-            <button className="btn" onClick={() => {setIsRunning(true)}}>Test</button>
     </div>
     )
 }
